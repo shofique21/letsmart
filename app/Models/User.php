@@ -47,11 +47,11 @@ class User extends Authenticatable
 
     public function addresses(): HasMany
     {
-        return $this->hasMany(Address::class);
+        return $this->hasMany(Address::class,'user_id');
     }
 
     public function payments(): HasMany
     {
-        return $this->hasMany(Payment::class);
+        return $this->hasMany(Payment::class,'user_id');
     }
 }
