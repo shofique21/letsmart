@@ -186,6 +186,13 @@
         .ps-1 {
             padding-left: 0.25rem!important;
         }
+        .mrb-15{
+            margin-bottom: 15px !important;
+        }
+        .create-btn{
+            position:absolute;
+            right: 20px;
+        }
     </style>
 </head>
 
@@ -222,7 +229,7 @@
                                 <ul>
                                     <li><a class="dropdown-item" href="#">Product management</a></li>
                                     <li><a class="dropdown-item" href="#">Product Create</a></li>
-                                    <li><a class="dropdown-item" href="#">Category create</a></li>
+                                    <li><a class="dropdown-item" href="{{route('categories.index')}}">Category</a></li>
                                     <li><a class="dropdown-item" href="#">Subcategory create</a></li>
                                     <li><a class="dropdown-item" href="#">User create</a></li>
 
