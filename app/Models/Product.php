@@ -5,21 +5,31 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use App\Models\Category;
+use App\Models\Inventory;
 
 class Product extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'short_description',
+        'description',
+        'SKU',
+        'price',
+        'inventory_id',
+        'category_id',
+    ];
    
-    public function categories(): BelongsToMany
+    public function category(): BelongsTo
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsTo(Category::class,'category_id','id');
     }
 
     public function inventory(): BelongsTo
     {
-        return $this->belongsTo(Inventory::class);
+        return $this->belongsTo(Inventory::class, 'inventory_id','id');
     }
 
     public function discount(): BelongsTo

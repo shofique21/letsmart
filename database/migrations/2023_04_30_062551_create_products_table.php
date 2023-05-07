@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('SKU')->nullable();
             $table->bigInteger('category_id')->unsigned();
             $table->bigInteger('inventory_id')->unsigned();
-            $table->double('price',5,2)->nullable()->default(0);
+            $table->double('price',8,2)->nullable()->default(0);
             $table->bigInteger('discount_id')->unsigned()->nullable();
             $table->timestamps();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

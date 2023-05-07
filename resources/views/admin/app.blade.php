@@ -228,7 +228,7 @@
                                 </ul>
                                 <ul>
                                     <li><a class="dropdown-item" href="#">Product management</a></li>
-                                    <li><a class="dropdown-item" href="#">Product Create</a></li>
+                                    <li><a class="dropdown-item" href="{{route('products.index')}}">Products</a></li>
                                     <li><a class="dropdown-item" href="{{route('categories.index')}}">Category</a></li>
                                     <li><a class="dropdown-item" href="{{route('subcategories.index')}}">Subcategory</a></li>
                                     <li><a class="dropdown-item" href="#">User create</a></li>
@@ -272,5 +272,15 @@
         </main>
     </div>
 </body>
+<script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
 
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+       $('.ckeditor').ckeditor();
+
+    });
+
+</script>
 </html>

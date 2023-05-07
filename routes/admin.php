@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubcategoryController;
+use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/admin/login', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('adminLogin');
@@ -12,4 +13,5 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::get('/admin/dashboard', [App\Http\Controllers\Admin\AdminController::class, 'adminDashboard'])->name('dashboard');
     Route::resource('categories', CategoryController::class);
     Route::resource('subcategories', SubcategoryController::class);
+    Route::resource('products', ProductController::class);
 });
