@@ -7,4 +7,5 @@ Interface CategoryRepositoryInterface{
     public function findCategory($id);
     public function updateCategory($data, $id); 
     public function destroyCategory($id);
+    public function allCategoriesName();
 }

@@ -8,7 +8,10 @@ class CategoryRepository  implements CategoryRepositoryInterface{
     {
         return Category::latest()->paginate(10);
     }  
-
+    public function allCategoriesName()
+    {
+        return Category::all();
+    }
     public function storeCategory($data)
     {
         return Category::create($data);
