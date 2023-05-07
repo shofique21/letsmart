@@ -230,7 +230,7 @@
                                     <li><a class="dropdown-item" href="#">Product management</a></li>
                                     <li><a class="dropdown-item" href="#">Product Create</a></li>
                                     <li><a class="dropdown-item" href="{{route('categories.index')}}">Category</a></li>
-                                    <li><a class="dropdown-item" href="#">Subcategory create</a></li>
+                                    <li><a class="dropdown-item" href="{{route('subcategories.index')}}">Subcategory</a></li>
                                     <li><a class="dropdown-item" href="#">User create</a></li>
 
                                 </ul>

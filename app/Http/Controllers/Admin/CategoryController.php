@@ -51,6 +51,7 @@ class CategoryController extends Controller
         $this->categoryRepository->updateCategory($request->all(), $id);
         return redirect()->route('categories.index')->with('message', 'Category Updated Successfully');
     }
+    
     public function destroy($id)
     {
         $this->categoryRepository->destroyCategory($id);
