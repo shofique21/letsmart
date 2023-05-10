@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\Category;
 use App\Models\Inventory;
+use App\Models\ProductMedia;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Product extends Model
 {
@@ -36,6 +38,9 @@ class Product extends Model
     {
         return $this->belongsTo(Discount::class);
     }
-
+    public function productMedia():HasOne
+    {
+        return $this->hasOne(ProductMedia::class,'product_id', 'id');
+    }
 
 }
