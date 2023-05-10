@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Discount;
 use App\Models\Inventory;
+use App\Models\Product;
+use App\Models\ProductMedia;
 use App\Repositories\Interfaces\CategoryRepositoryInterface;
 use App\Repositories\CategoryRepository;
 use App\Repositories\Interfaces\ProductRepositoryInterface;
@@ -42,6 +44,10 @@ class ProductController extends Controller
             'category_id' => 'required|integer',
             'SKU' => 'required|string',
             'price' => 'required|string',
+            'single_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gallery_images' => 'required',
+            'gallery_images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+           // 'gallery_images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $inventoryData = $request->validate([
@@ -51,7 +57,30 @@ class ProductController extends Controller
         $data['inventory_id'] = Inventory::create($inventoryData)->id;
         $data['short_description'] = $request->get('short_description');
         $data['description'] = $request->get('description');
-        $this->productRepository->storeProduct($data);
+       if($mediaInfo['product_id'] = $this->productRepository->storeProduct($data)){
+        if ($request->hasFile('single_image')) {
+            $imageName = time().'.'.$request->single_image->extension();  
+            $request->single_image->storeAs('images', $imageName);
+            $mediaInfo['single_image'] = $imageName;
+            $mediaInfo['video_url'] = $request->get('video_url');
+             ProductMedia::create($mediaInfo);
+            }
+        }
+        // if($request->hasfile('gallery_images'))
+        //  {
+
+        //     foreach($request->file('gallery_images') as $image)
+        //     {
+        //         $name=$image->getClientOriginalName();
+        //         $image->move(public_path().'/images/', $name);  
+        //         $imageData[] = $name;  
+        //     }
+        //  }
+
+        //  $gellery = new ProductMedia();
+        //  $gellery->gallery_images=json_encode($imageData);
+        //  $gellery->save();
+
         return redirect()->route('products.index')->with('message', 'Product Created Successfully');
 
     }

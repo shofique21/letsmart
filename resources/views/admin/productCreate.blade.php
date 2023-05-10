@@ -8,7 +8,7 @@
                 <div class="card-header" style="padding-bottom: 20px;">{{ __('Product Create') }} <a href="{{ route('products.index') }}" class="btn btn-primary primary-bg-color create-btn">Products</a></div>
                 <div class="card-body">
                     <div class="row">
-                        <form action="{{ route('products.store') }}" class="was-validated" method="POST">
+                        <form action="{{ route('products.store') }}" class="was-validated" method="POST" enctype="multipart/form-data">
                            @csrf
                             <div class="mb-3 mt-3">
                                 <label for="name" class="form-label">Product Name:</label>
@@ -65,6 +65,25 @@
                                 @endforeach
                                </select>
                             </div>
+                            <div class="mb-3 mt-3">
+                                <label for="name" class="form-label">Main Image:</label>
+                                <input type="file" class="form-control" id="single_image"  name="single_image" required>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                            <!-- <div class="mb-3 mt-3">
+                                <label for="name" class="form-label">Product gallery:</label>
+                                <input type="file" class="form-control" id="gallery_images"  name="gallery_images[]" required>
+                                <div class="input-group-btn"> 
+                                <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+                                </div>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div> -->
+                            <div class="mb-3 mt-3">
+                                <label for="name" class="form-label">Product video link:</label>
+                                <input type="text" class="form-control" id="video_url"  name="video_url">
+                            </div>
                             <div class="form-check mb-3">
                                 <input class="form-check-input" type="checkbox" id="myCheck" name="status">
                                 <label class="form-check-label" for="myCheck">Is Active.</label>
@@ -78,3 +97,19 @@
     </div>
 </div>
 @endsection
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+  $(".btn-success").click(function(){ 
+      var html = $(".clone").html();
+      $(".increment").after(html);
+  });
+
+  $("body").on("click",".btn-danger",function(){ 
+      $(this).parents(".control-group").remove();
+  });
+
+});
+
+</script>

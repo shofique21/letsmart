@@ -14,7 +14,7 @@ class ProductRepository implements ProductRepositoryInterface{
 
     public function storeProduct($data)
     {
-        return Product::create($data);
+        return Product::create($data)->id;
     }
 
     public function findProduct($id)
