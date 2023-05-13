@@ -2,8 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\OrderDetails;
-use App\Models\PaymentDetails;
+use App\Models\Order;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,12 +15,13 @@ class PaymentDetailsFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    protected $model = PaymentDetails::class;
+    protected $model = Order::class;
     
     public function definition(): array
     {
         return [
-            'order_id' => OrderDetails::factory(),
+            'order_id' => Order::factory(),
+            'payment_id' => 1,
             'amount' =>fake()->randomDigitNotZero(),
             'provider' =>fake()->randomElements(),
             'status' => 'Cleared',

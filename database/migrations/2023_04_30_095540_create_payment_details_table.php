@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('payment_details', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('order_id');
+            $table->bigInteger('order_id')->unsigned();
+            $table->bigInteger('payment_id')->unsigned();
             $table->double('amount',5,2)->nullable()->default(0);
             $table->string('provider')->nullable();
             $table->string('status')->default('cleared');
             $table->timestamps();
+            $table->foreign('order_id')->references('id')->on('orders');
+            $table->foreign('payment_id')->references('id')->on('payments');
         });
     }
 
