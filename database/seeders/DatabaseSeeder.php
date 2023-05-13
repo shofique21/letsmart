@@ -28,11 +28,13 @@ class DatabaseSeeder extends Seeder
         // $this->call(InventoryTableSeeder::class);
         // $this->call(DiscountTableSeeder::class);
         // $this->call(ProductTableSeeder::class);
-        // $this->call(CartItemTableSeeder::class);
-        // $this->call(ShoppingSessionTableSeeder::class);
-        // $this->call(OrderDetailsTableSeeder::class);
-        // $this->call(PaymentDetailsTableSeeder::class);
-        // $this->call(OrderItemTableSeeder::class);
-        $this->call(AdminUserTableSeeder::class);
+        $this->call(CartItemTableSeeder::class);
+        $this->call(ShoppingSessionTableSeeder::class);
+        $this->call(OrderItemTableSeeder::class);
+        $this->call(PaymentDetailsTableSeeder::class);
+        $this->call(OrderDetailsTableSeeder::class);
+       
+         
+        //$this->call(AdminUserTableSeeder::class);
     }
 }
