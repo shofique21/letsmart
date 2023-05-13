@@ -215,31 +215,67 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dashboard
+                                Shop
                             </a>
                             <div class="dropdown-menu">
                                 <ul>
-                                    <li><a class="dropdown-item" href="#">Shop Management</a></li>
-                                    <li><a class="dropdown-item" href="#">Product List</a></li>
-                                    <li><a class="dropdown-item" href="#">Order List</a></li>
-                                    <li><a class="dropdown-item" href="#">Invoice List</a></li>
-                                    <li><a class="dropdown-item" href="#">User List</a></li>
+                                    <li><a class="dropdown-item" href="#">Product Management</a></li>
+                                    <li><a class="dropdown-item" href="#">Feature Products</a></li>
+                                    <li><a class="dropdown-item" href="#">New Arival</a></li>
+                                    <li><a class="dropdown-item" href="#">Sales Product</a></li>
+                                    <li><a class="dropdown-item" href="#">Discount Product</a></li>
 
                                 </ul>
                                 <ul>
-                                    <li><a class="dropdown-item" href="#">Product management</a></li>
-                                    <li><a class="dropdown-item" href="{{route('products.index')}}">Products</a></li>
+                                    <li><a class="dropdown-item" href="#">Order Management</a></li>
+                                    <li><a class="dropdown-item" href="#">Order List</a></li>
+                                    <li><a class="dropdown-item" href="#">Recent Order List</a></li>
+                                    <li><a class="dropdown-item" href="#">Confirmed Order List</a></li>
+                                    <li><a class="dropdown-item" href="#">Delivered List</a></li>
+
+                                </ul>
+                                <ul>
+                                    <li><a class="dropdown-item" href="#">Account Management</a></li>
+                                    <li><a class="dropdown-item" href="#">Sales Ammount</a></li>
+                                    <li><a class="dropdown-item" href="#">Deposit Amount</a></li>
+                                    <li><a class="dropdown-item" href="#">Buy Ammount</a></li>
+                                    <li><a class="dropdown-item" href="#">Pending Ammount</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Products
+                            </a>
+                            <div class="dropdown-menu">
+                                <ul>
+                                    <li><a class="dropdown-item" href="#">Stock Management</a></li>
+                                    <li><a class="dropdown-item" href="{{route('products.index')}}">Product List</a></li>
+                                    <li><a class="dropdown-item" href="{{route('products.index')}}">Product Create</a></li>
+                                    <li><a class="dropdown-item" href="{{route('products.index')}}">Product Stock </a></li>
+                                    <li><a class="dropdown-item" href="{{route('products.index')}}">Product Stock Out </a></li>
+
+                                </ul>
+                                <ul>
+                                    <li><a class="dropdown-item" href="#">Product Attribute</a></li>
                                     <li><a class="dropdown-item" href="{{route('categories.index')}}">Category</a></li>
                                     <li><a class="dropdown-item" href="{{route('subcategories.index')}}">Subcategory</a></li>
-                                    <li><a class="dropdown-item" href="#">User create</a></li>
+                                    <li><a class="dropdown-item" href="#">Brand</a></li>
+                                    <li><a class="dropdown-item" href="#">Color</a></li>
 
                                 </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Users & Sellers
+                            </a>
+                            <div class="dropdown-menu">
                                 <ul>
-                                    <li><a class="dropdown-item" href="#">Statics</a></li>
-                                    <li><a class="dropdown-item" href="#">Mega Menu Link</a></li>
-                                    <li><a class="dropdown-item" href="#">Mega Menu Link</a></li>
-                                    <li><a class="dropdown-item" href="#">Mega Menu Link</a></li>
-                                    <li><a class="dropdown-item" href="#">Mega Menu Link</a></li>
+                                    <li><a class="dropdown-item" href="#">Users Management</a></li>
+                                    <li><a class="dropdown-item" href="">Seller List</a></li>
+                                    <li><a class="dropdown-item" href="">Admin User List</a></li>
+                                    <li><a class="dropdown-item" href="{{route('users.index')}}">User List</a></li>
 
                                 </ul>
                             </div>
