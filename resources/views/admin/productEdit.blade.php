@@ -74,7 +74,7 @@
                             </div>
                             <div class="mb-3 mt-3">
                             <label for="name" class="form-label">Main Image:</label>
-                                <div><img src="{{ asset('/storage/app/images/'.$product->productMedia->single_image) }}" alt=""/> </div>
+                                <div><img src="" alt=""/> </div>
                             </div>
                             <div class="form-check mb-3">
                                 <input class="form-check-input" type="checkbox" id="myCheck" name="status">

@@ -71,14 +71,21 @@
                                 <div class="valid-feedback">Valid.</div>
                                 <div class="invalid-feedback">Please fill out this field.</div>
                             </div>
+                            <div class="mb-3 mt-3">
+                                <label for="gallery_images" class="form-label">Gallery image 1:</label>
+                                <input type="file" class="form-control" id="gallery_images"  name="gallery_images[]" multiple>
+                            </div>
                             <!-- <div class="mb-3 mt-3">
-                                <label for="name" class="form-label">Product gallery:</label>
-                                <input type="file" class="form-control" id="gallery_images"  name="gallery_images[]" required>
-                                <div class="input-group-btn"> 
-                                <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
-                                </div>
-                                <div class="valid-feedback">Valid.</div>
-                                <div class="invalid-feedback">Please fill out this field.</div>
+                                <label for="gallery_images" class="form-label">Gallery image 2:</label>
+                                <input type="file" class="form-control" id="gallery_images"  name="gallery_images[]">
+                            </div>
+                            <div class="mb-3 mt-3">
+                                <label for="gallery_images" class="form-label">Gallery image 3:</label>
+                                <input type="file" class="form-control" id="gallery_images"  name="gallery_images[]">
+                            </div>
+                            <div class="mb-3 mt-3">
+                                <label for="gallery_images" class="form-label">Gallery image 4:</label>
+                                <input type="file" class="form-control" id="gallery_images"  name="gallery_images[]">
                             </div> -->
                             <div class="mb-3 mt-3">
                                 <label for="name" class="form-label">Product video link:</label>
@@ -97,19 +104,3 @@
     </div>
 </div>
 @endsection
-<script type="text/javascript">
-
-$(document).ready(function() {
-
-  $(".btn-success").click(function(){ 
-      var html = $(".clone").html();
-      $(".increment").after(html);
-  });
-
-  $("body").on("click",".btn-danger",function(){ 
-      $(this).parents(".control-group").remove();
-  });
-
-});
-
-</script>

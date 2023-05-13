@@ -11,6 +11,9 @@ class ProductMedia extends Model
     use HasFactory;
 
     protected $fillable = ['product_id', 'single_image','gallery_images'];
+    protected $casts = [
+        'gallery_images' => 'array'
+    ];
 
     public function product():BelongsTo
     {
