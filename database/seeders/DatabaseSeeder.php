@@ -20,18 +20,18 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        $this->call(UserTableSeeder::class);
-        $this->call(UserAddressTableSeeder::class);
-        $this->call(PaymentTableSeeder::class);
-        $this->call(CategoryTableSeeder::class);
-        $this->call(SubcategoryTableSeeder::class);
-        $this->call(InventoryTableSeeder::class);
-        $this->call(DiscountTableSeeder::class);
-        $this->call(ProductTableSeeder::class);
-        $this->call(CartItemTableSeeder::class);
-        $this->call(ShoppingSessionTableSeeder::class);
-        $this->call(OrderTableSeeder::class);
-        $this->call(OrderItemTableSeeder::class);
+        // $this->call(UserTableSeeder::class);
+        // $this->call(UserAddressTableSeeder::class);
+        // $this->call(PaymentTableSeeder::class);
+        // $this->call(CategoryTableSeeder::class);
+        // $this->call(SubcategoryTableSeeder::class);
+        // $this->call(InventoryTableSeeder::class);
+        // $this->call(DiscountTableSeeder::class);
+        // $this->call(ProductTableSeeder::class);
+        // $this->call(CartItemTableSeeder::class);
+        // $this->call(ShoppingSessionTableSeeder::class);
+        // $this->call(OrderTableSeeder::class);
+        // $this->call(OrderItemTableSeeder::class);
         //$this->call(PaymentDetailsTableSeeder::class);
        
          

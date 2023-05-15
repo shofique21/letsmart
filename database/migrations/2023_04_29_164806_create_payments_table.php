@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('provider')->nullable();
             $table->bigInteger('account_no')->nullable();
             $table->date('expiry')->nullable();
+            $table->integer('status')->nullable()->default(1);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

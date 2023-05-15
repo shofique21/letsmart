@@ -15,6 +15,10 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->decimal('total')->nullable()->default(1);
+            $table->integer('confirmed')->nullable()->default(0);
+            $table->integer('delivered')->nullable()->default(0);
+            $table->integer('return')->nullable()->default(0);
+            $table->integer('exchange')->nullable()->default(0);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
