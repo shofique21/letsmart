@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('product_media', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('product_id')->unsigned();
-            $table->string('single_image');
+            $table->string('single_image')->nullable();
             $table->text('gallery_images')->nullable();
             $table->string('video_url')->nullable();
             $table->timestamps();
