@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->double('discount_percentage',3,2)->nullable()->default(0);
-            $table->string('active')->nullable()->default('No');
+            $table->integer('status')->nullable()->default(0);
             $table->timestamps();
         });
     }

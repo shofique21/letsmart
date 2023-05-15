@@ -18,9 +18,14 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('SKU')->nullable();
             $table->bigInteger('category_id')->unsigned();
+            $table->bigInteger('subcategory_id')->nullable();
+            $table->bigInteger('brand_id')->unsigned()->nullable()->default(1);
+            $table->text('color')->nullable();
+            $table->string('size')->nullable();
             $table->bigInteger('inventory_id')->unsigned();
             $table->double('price',8,2)->nullable()->default(0);
             $table->bigInteger('discount_id')->unsigned()->nullable();
+            $table->integer('status')->nullable()->default(0);
             $table->timestamps();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('inventory_id')->references('id')->on('inventories')->onDelete('cascade');
