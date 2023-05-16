@@ -107,7 +107,7 @@
                                 <ul>
                                     <?php for($j=$l;$j<count($categories);$j++) { $l++;
                                        ?>
-                                        <li><a class="dropdown-item" href="#">{{$categories[$j]['name']}}</a></li>
+                                        <li><a class="dropdown-item" href="{{route('products',$categories[$j]['id'])}}">{{$categories[$j]['name']}}</a></li>
                                    <?php 
                                        if($l%4 ==0) { break;}
                                        } ?>
