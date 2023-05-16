@@ -43,9 +43,9 @@
 }
 
 .dropdown-menu li:first-child a {
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 1.1em;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     color: #516beb;
 }
 
@@ -87,9 +87,9 @@
 }
 
 .dropdown-menu li:first-child a {
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 1.1em;
-    color: #000;
+    color: gray;
 }
 
 @media screen and (min-width: 993px) {
