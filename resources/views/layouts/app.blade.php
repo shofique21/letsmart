@@ -14,7 +14,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <!-- extra links -->
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js','resources/css/custom.css','resources/css/product.css'])
@@ -165,7 +165,7 @@
                     <a href="#">Contact</a>
                 </p>
 
-                <p class="footer-company-name">Company Name © 2023</p>
+                <p class="footer-company-name">Letsmart © 2023</p>
             </div>
 
             <div class="footer-center">
@@ -177,12 +177,12 @@
 
                 <div>
                     <i class="fa fa-phone"></i>
-                    <p>+1.555.555.5555</p>
+                    <p>+8801727904010</p>
                 </div>
 
                 <div>
                     <i class="fa fa-envelope"></i>
-                    <p><a href="mailto:support@company.com">support@company.com</a></p>
+                    <p><a href="mailto:support@company.com">support@letsmart.com</a></p>
                 </div>
 
             </div>
