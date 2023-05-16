@@ -99,29 +99,22 @@
                                 Category
                             </a>
                             <div class="dropdown-menu">
+                            @if($categories)
+                            <?php 
+                                $l = 0;
+                                for($i=0;$i<3;$i++) { 
+                                ?>
                                 <ul>
-                                    <li><a class="dropdown-item" href="#">Product Management</a></li>
-                                    <li><a class="dropdown-item" href="#">Feature Products</a></li>
-                                    <li><a class="dropdown-item" href="#">New Arival</a></li>
-                                    <li><a class="dropdown-item" href="#">Sales Product</a></li>
-                                    <li><a class="dropdown-item" href="#">Discount Product</a></li>
+                                    <?php for($j=$l;$j<count($categories);$j++) { $l++;
+                                       ?>
+                                        <li><a class="dropdown-item" href="#">{{$categories[$j]['name']}}</a></li>
+                                   <?php 
+                                       if($l%4 ==0) { break;}
+                                       } ?>
+                                </ul>
+                                <?php } ?>
 
-                                </ul>
-                                <ul>
-                                    <li><a class="dropdown-item" href="#">Order Management</a></li>
-                                    <li><a class="dropdown-item" href="#">Order List</a></li>
-                                    <li><a class="dropdown-item" href="#">Recent Order List</a></li>
-                                    <li><a class="dropdown-item" href="#">Confirmed Order List</a></li>
-                                    <li><a class="dropdown-item" href="#">Delivered List</a></li>
-
-                                </ul>
-                                <ul>
-                                    <li><a class="dropdown-item" href="#">Account Management</a></li>
-                                    <li><a class="dropdown-item" href="#">Sales Ammount</a></li>
-                                    <li><a class="dropdown-item" href="#">Deposit Amount</a></li>
-                                    <li><a class="dropdown-item" href="#">Buy Ammount</a></li>
-                                    <li><a class="dropdown-item" href="#">Pending Ammount</a></li>
-                                </ul>
+                            @endif
                             </div>
                         </li>
                         <li class="nav-item">

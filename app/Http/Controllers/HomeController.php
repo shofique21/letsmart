@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Repositories\Interfaces\CategoryRepositoryInterface;
+use App\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,9 +14,11 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    private $categoryRepository;
+
+    public function __construct(CategoryRepositoryInterface $categoryRepository)
     {
-        $this->middleware('auth');
+       $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -23,6 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $categories = $this->categoryRepository->totalCategories();
+        return view('home', compact('categories'));
     }
 }

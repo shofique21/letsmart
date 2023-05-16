@@ -35,4 +35,7 @@ class CategoryRepository  implements CategoryRepositoryInterface{
         $category = Category::find($id);
         $category->delete();
     }
+    public function totalCategories(){
+        return Category::all();
+    }
 }
