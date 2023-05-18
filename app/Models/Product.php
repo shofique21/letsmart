@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\Category;
 use App\Models\Inventory;
 use App\Models\ProductMedia;
+use App\Models\Brand;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Product extends Model
@@ -19,9 +20,12 @@ class Product extends Model
         'short_description',
         'description',
         'SKU',
-        'price',
+        'sale_price',
         'inventory_id',
         'category_id',
+        'brand_id',
+        'color',
+        'size'
     ];
    
     public function category(): BelongsTo
@@ -41,6 +45,11 @@ class Product extends Model
     public function productMedia():HasOne
     {
         return $this->hasOne(ProductMedia::class,'product_id', 'id');
+    }
+    
+    public function brand(): BelongsTo
+    {
+        return $this->belongsTo(Brand::class);
     }
 
 }

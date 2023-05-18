@@ -7,4 +7,5 @@ Interface SubcategoryRepositoryInterface{
     public function findSubcategory($id);
     public function updateSubcategory($data, $id);
     public function deleteSubcategory($id);
+    public function subcategoryList();
 }

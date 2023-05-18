@@ -11,7 +11,13 @@ class Inventory extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['quantity'];
+    protected $fillable = [
+        'quantity',
+        'buy_price',
+        'total_stock',
+        'buy_accounts',
+        'sold_accounts'
+    ];
 
     public function product():HasOne
     {

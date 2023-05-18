@@ -10,9 +10,9 @@ class ProductMedia extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['product_id', 'single_image','gallery_images'];
+    protected $fillable = ['product_id', 'single_image','product_images','video_url'];
     protected $casts = [
-        'gallery_images' => 'array'
+        'product_images' => 'array'
     ];
 
     public function product():BelongsTo
