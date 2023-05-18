@@ -260,7 +260,7 @@
                                     <li><a class="dropdown-item" href="#">Product Attribute</a></li>
                                     <li><a class="dropdown-item" href="{{route('categories.index')}}">Category</a></li>
                                     <li><a class="dropdown-item" href="{{route('subcategories.index')}}">Subcategory</a></li>
-                                    <li><a class="dropdown-item" href="#">Brand</a></li>
+                                    <li><a class="dropdown-item" href="{{route('brands.index')}}">Brand</a></li>
                                     <li><a class="dropdown-item" href="#">Color</a></li>
 
                                 </ul>

@@ -34,4 +34,8 @@ class SubcategoryRepository implements SubcategoryRepositoryInterface{
         $subcategory = Subcategory::find($id);
         $subcategory->delete();
     }
+    public function subcategoryList()
+    {
+        return Subcategory::all();
+    }
 }

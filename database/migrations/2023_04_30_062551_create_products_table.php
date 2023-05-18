@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->text('name');
             $table->text('short_description')->nullable();
             $table->text('description')->nullable();
             $table->string('SKU')->nullable();
             $table->bigInteger('category_id')->unsigned();
-            $table->bigInteger('subcategory_id')->nullable();
+            $table->bigInteger('subcategory_id')->unsigned()->nullable();
             $table->bigInteger('brand_id')->unsigned()->nullable()->default(1);
             $table->text('color')->nullable();
             $table->string('size')->nullable();
             $table->bigInteger('inventory_id')->unsigned();
-            $table->double('price',8,2)->nullable()->default(0);
+            $table->double('sale_price',8,2)->nullable()->default(0);
             $table->bigInteger('discount_id')->unsigned()->nullable();
             $table->integer('status')->nullable()->default(0);
             $table->timestamps();
@@ -39,6 +39,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::disableForeignKeyConstraints();
+        Schema::drop('products');
+        Schema::enableForeignKeyConstraints();
     }
 };

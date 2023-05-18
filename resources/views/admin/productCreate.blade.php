@@ -17,7 +17,7 @@
                                 <div class="invalid-feedback">Please fill out this field.</div>
                             </div>
                             <div class="mb-3 mt-3">
-                                <label for="category_id" class="form-label">Category Name:</label>
+                                <label for="category_id" class="form-label">Category:</label>
                                <select class="form-control" id="category_id" name="category_id">
                                 @foreach($categories as $category)
                                   <option value="{{$category->id}}">{{$category->name}}</option>
@@ -25,6 +25,45 @@
                                </select>
                                 <div class="valid-feedback">Valid.</div>
                                 <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                            <div class="mb-3 mt-3">
+                                <label for="category_id" class="form-label">Subcategory:</label>
+                               <select class="form-control" id="subcategory_id" name="subcategory_id">
+                                <option value="">No Subcategory</option>
+                                @foreach($subcategories as $subcategory)
+                                  <option value="{{$subcategory->id}}">{{$subcategory->name}}</option>
+                                @endforeach
+                               </select>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                            <div class="mb-3 mt-3">
+                                <label for="brand_id" class="form-label">Brand:</label>
+                               <select class="form-control" id="brand_id" name="brand_id">
+                                <option value="1">None Brand</option>
+                                @foreach($brands as $brand)
+                                  <option value="{{$brand->id}}">{{$brand->name}}</option>
+                                @endforeach
+                               </select>
+                            </div>
+                            <div class="mb-3 mt-3">
+                                <label for="color" class="form-label">Color:</label>
+                               <select class="form-control" id="color" name="color">
+                                  <option value="White">White</option>
+                                  <option value="Black">Black</option>
+                                  <option value="Blue">Blue</option>
+                                  <option value="Blue">Red</option>
+                               </select>
+                            </div>
+                            <div class="mb-3 mt-3">
+                                <label for="size" class="form-label">Size:</label>
+                               <select class="form-control" id="size" name="size">
+                                  <option value="S">S</option>
+                                  <option value="M">M</option>
+                                  <option value="L">L</option>
+                                  <option value="XL">XL</option>
+                                  <option value="XXL">XXL</option>
+                               </select>
                             </div>
                             <div class="mb-3 mt-3">
                                 <label for="short_description" class="form-label">Short Description:</label>
@@ -51,8 +90,14 @@
                                 <div class="invalid-feedback">Please fill out this field.</div>
                             </div>
                             <div class="mb-3 mt-3">
-                                <label for="price" class="form-label">Price:</label>
-                                <input type="text" class="form-control" id="price"  name="price" required>
+                                <label for="buy_price" class="form-label">Buy Price:</label>
+                                <input type="text" class="form-control" id="buy_price"  name="buy_price" required>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                            <div class="mb-3 mt-3">
+                                <label for="sale_price" class="form-label">Sale Price:</label>
+                                <input type="text" class="form-control" id="sale_price"  name="sale_price" required>
                                 <div class="valid-feedback">Valid.</div>
                                 <div class="invalid-feedback">Please fill out this field.</div>
                             </div>
@@ -65,28 +110,16 @@
                                 @endforeach
                                </select>
                             </div>
-                            <div class="mb-3 mt-3">
+                            <!-- <div class="mb-3 mt-3">
                                 <label for="name" class="form-label">Main Image:</label>
                                 <input type="file" class="form-control" id="single_image"  name="single_image" required>
                                 <div class="valid-feedback">Valid.</div>
                                 <div class="invalid-feedback">Please fill out this field.</div>
-                            </div>
-                            <div class="mb-3 mt-3">
-                                <label for="gallery_images" class="form-label">Gallery image 1:</label>
-                                <input type="file" class="form-control" id="gallery_images"  name="gallery_images[]" multiple>
-                            </div>
-                            <!-- <div class="mb-3 mt-3">
-                                <label for="gallery_images" class="form-label">Gallery image 2:</label>
-                                <input type="file" class="form-control" id="gallery_images"  name="gallery_images[]">
-                            </div>
-                            <div class="mb-3 mt-3">
-                                <label for="gallery_images" class="form-label">Gallery image 3:</label>
-                                <input type="file" class="form-control" id="gallery_images"  name="gallery_images[]">
-                            </div>
-                            <div class="mb-3 mt-3">
-                                <label for="gallery_images" class="form-label">Gallery image 4:</label>
-                                <input type="file" class="form-control" id="gallery_images"  name="gallery_images[]">
                             </div> -->
+                            <div class="mb-3 mt-3">
+                                <label for="product_images" class="form-label">Product images:</label>
+                                <input type="file" class="form-control" id="product_images"  name="product_images[]" multiple>
+                            </div>
                             <div class="mb-3 mt-3">
                                 <label for="name" class="form-label">Product video link:</label>
                                 <input type="text" class="form-control" id="video_url"  name="video_url">
