@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Repositories\Interfaces\FrontentdProductRepositoryInterface;
 
@@ -15,23 +14,20 @@ class FrontendProductController extends Controller
     }
 
     public function categoryProducts($id){
-            $categories = $this->frontendProduct->allCategories();
             $categoryProducts = $this->frontendProduct->singleCategoryProducts($id);
             $subcategoryList = $this->frontendProduct->subcategoryList($id);
-            return view('frontend.categoryProduct', compact('categories','subcategoryList','categoryProducts'));
+            return view('frontend.categoryProduct', compact('subcategoryList','categoryProducts'));
     }
 
     public function subcategoryProducts($id)
     {
-        $categories = $this->frontendProduct->allCategories();
         $subcategoryProducts = $this->frontendProduct->singleSubcategoryProducts($id);
-        return view('frontend.subcategoryProducts', compact('categories','subcategoryProducts'));
+        return view('frontend.subcategoryProducts', compact('subcategoryProducts'));
     }
 
     public function productDetails($id)
     {
-        $categories = $this->frontendProduct->allCategories();
         $product_details = $this->frontendProduct->getProductDetails($id);
-        return view('frontend.productDetails', compact('categories','product_details'));
+        return view('frontend.productDetails', compact('product_details'));
     }
 }

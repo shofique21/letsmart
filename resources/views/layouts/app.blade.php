@@ -19,16 +19,42 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js','resources/css/custom.css','resources/css/product.css'])
     <style>
-       @keyframes slidy {
-        0% { left: 0%; }
-        20% { left: 0%; }
-        25% { left: -100%; }
-        45% { left: -100%; }
-        50% { left: -200%; }
-        70% { left: -200%; }
-        75% { left: -300%; }
-        95% { left: -300%; }
-        100% { left: -400%; }
+        @keyframes slidy {
+            0% {
+                left: 0%;
+            }
+
+            20% {
+                left: 0%;
+            }
+
+            25% {
+                left: -100%;
+            }
+
+            45% {
+                left: -100%;
+            }
+
+            50% {
+                left: -200%;
+            }
+
+            70% {
+                left: -200%;
+            }
+
+            75% {
+                left: -300%;
+            }
+
+            95% {
+                left: -300%;
+            }
+
+            100% {
+                left: -400%;
+            }
         }
 
         div#slider {
@@ -53,11 +79,21 @@
 </head>
 
 <body>
+    <?php
+
+    use App\Models\Category;
+
+    $categories = Category::all();
+    ?>
     <div id="app">
         <header style="min-height: 60px;" class="header">
             <div class="container">
                 <a class="" href="{{ url('/') }}"> {{ config('app.name', 'Laravel') }}</a>
                 <div class="header-right">
+                    <a href="{{ route('cart.list') }}" class="flex items-center">
+                        <span class="bi bi-cart"></span>
+                        <span class="text-red-700">{{ Cart::getTotalQuantity()}}</span>
+                    </a>
                     @guest
                     @if (Route::has('login'))
                     <a class="nav-link" aria-current="page" href="{{ route('login') }}">Login</a>
@@ -99,22 +135,25 @@
                                 Category
                             </a>
                             <div class="dropdown-menu">
-                            @if($categories)
-                            <?php 
+                                @if($categories)
+                                <?php
                                 $l = 0;
-                                for($i=0;$i<3;$i++) { 
+                                for ($i = 0; $i < 3; $i++) {
                                 ?>
-                                <ul>
-                                    <?php for($j=$l;$j<count($categories);$j++) { $l++;
-                                       ?>
-                                        <li><a class="dropdown-item" href="{{route('products',$categories[$j]['id'])}}">{{$categories[$j]['name']}}</a></li>
-                                   <?php 
-                                       if($l%4 ==0) { break;}
-                                       } ?>
-                                </ul>
+                                    <ul>
+                                        <?php for ($j = $l; $j < count($categories); $j++) {
+                                            $l++;
+                                        ?>
+                                            <li><a class="dropdown-item" href="{{route('products',$categories[$j]['id'])}}">{{$categories[$j]['name']}}</a></li>
+                                        <?php
+                                            if ($l % 4 == 0) {
+                                                break;
+                                            }
+                                        } ?>
+                                    </ul>
                                 <?php } ?>
 
-                            @endif
+                                @endif
                             </div>
                         </li>
                         <li class="nav-item">
