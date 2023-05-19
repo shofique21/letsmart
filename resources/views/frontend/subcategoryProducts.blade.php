@@ -5,19 +5,14 @@
 
         <section class="pb-5 pt-5">
           <div class="row">
+            @foreach($subcategoryProducts as $subcategoryProduct)
             <div class="col-12 col-sm-8 col-md-6 col-lg-4 mb-4">
                 <div class="card">
-                    <img class="card-img" src="{{asset('images/vans.png')}}" alt="Vans">
-                    <div class="card-img-overlay d-flex justify-content-end">
-                        <a href="#" class="card-link text-danger like">
-                            <i class="fas fa-heart"></i>
-                        </a>
-                    </div>
+                    <img class="card-img" src="{{asset('storage/'.$subcategoryProduct->productMedia->product_images[0])}}" alt="Vans">
                     <div class="card-body">
-                        <h4 class="card-title">Vans Sk8-Hi MTE Shoes</h4>
+                        <h4 class="card-title">{{$subcategoryProduct->name}}</h4>
                         <h6 class="card-subtitle mb-2 text-muted">Style: VA33TXRJ5</h6>
-                        <p class="card-text">
-                            The Vans All-Weather MTE Collection features footwear and apparel designed to withstand the elements whilst still looking cool. </p>
+                        <p class="card-text">{{$subcategoryProduct->short_description}}</p>
                         <div class="options d-flex flex-fill">
                             <select class="custom-select mr-1">
                                 <option selected>Color</option>
@@ -41,7 +36,7 @@
                     </div>
                 </div>
             </div>
-           
+           @endforeach
         </div>
     </section>
    

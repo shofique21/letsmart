@@ -14,12 +14,14 @@ class Inventory extends Model
     protected $fillable = [
         'quantity',
         'buy_price',
+        'sale_price',
         'total_stock',
         'buy_accounts',
-        'sold_accounts'
+        'sold_accounts',
+        'discount_accounts'
     ];
 
-    public function product():HasOne
+    public function product(): HasOne
     {
         return $this->hasOne(Product::class);
     }
