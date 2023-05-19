@@ -50,7 +50,15 @@
                             <div class="price text-success">
                                 <h5 class="mt-4">${{$product->inventory->sale_price}}</h5>
                             </div>
-                            <a href="#" class="btn btn-danger mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                            <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" value="{{ $product->id }}" name="id">
+                            <input type="hidden" value="{{ $product->name }}" name="name">
+                            <input type="hidden" value="{{ $product->inventory->sale_price }}" name="price">
+                            <input type="hidden" value="{{ $product->productMedia->product_images[0] }}"  name="image">
+                            <input type="hidden" value="1" name="quantity">
+                            <button class="btn btn-danger mt-3"><i class="bi bi-shopping-cart"></i> Add to Cart</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -362,7 +370,15 @@
                             <div class="price text-success">
                                 <h5 class="mt-4">$125</h5>
                             </div>
-                            <a href="#" class="btn btn-danger mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                            <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" value="{{ $product->id }}" name="id">
+                            <input type="hidden" value="{{ $product->name }}" name="name">
+                            <input type="hidden" value="{{ $product->price }}" name="price">
+                            <input type="hidden" value="{{ $product->image }}"  name="image">
+                            <input type="hidden" value="1" name="quantity">
+                            <button class="btn btn-danger mt-3"><i class="bi bi-shopping-cart"></i> Add to Cart</button>
+                            </form>
                         </div>
                     </div>
                 </div>
