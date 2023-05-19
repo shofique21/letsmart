@@ -49,27 +49,36 @@ class ProductController extends Controller
             'name' => 'required|string|max:255',
             'category_id' => 'required|integer',
             'SKU' => 'required|string',
-            'sale_price' => 'required|string',
             'product_images' => 'required',
             'product_images.*' => 'image|mimes:jpeg,png,jpg,gif,svg,web|max:2048'
         ]);
 
         $inventoryData = $request->validate([
             'quantity' => 'required|integer',
+            'sale_price' => 'required|string'
         ]);
-        $inventoryData['buy_price'] = $request->get('buy_price');
-        $inventoryData['total_stock'] = $request->get('quantity');
-        $inventoryData['buy_accounts'] = $request->get('quantity') * $inventoryData['buy_price'];
-
-        $data['inventory_id'] = Inventory::create($inventoryData)->id;
-        $data['short_description'] = $request->get('short_description');
-        $data['description'] = $request->get('description');
-        $data['subcategory_id'] = $request->get('subcategory_id');
-
-
-
-        // $image_path = $request->file('single_image')->store('images', 'public');
-        // $request->single_image->move(public_path() . '/images/', $imageName);
+        $inventoryData = [
+            'buy_price' => $request->get('buy_price'),
+            'sale_price' => $request->get('sale_price'),
+            'quantity' => $request->get('quantity'),
+            'total_stock' => $request->get('quantity'),
+            'buy_accounts' => $request->get('quantity') * $request->get('buy_price')
+        ];
+        $data = [
+            'inventory_id' => Inventory::create($inventoryData)->id,
+            'name' => $request->get('name'),
+            'category_id' => $request->get('category_id'),
+            'subcategory_id' => $request->get('subcategory_id'),
+            'SKU' => $request->get('SKU'),
+            'short_description' => $request->get('short_description'),
+            'description' => $request->get('description'),
+            'color' => $request->get('color'),
+            'size' => $request->get('size'),
+            'is_new' => $request->get('is_new') ? 1 : false,
+            'is_feature' => $request->get('is_feature') ? 1 : false,
+            'is_offer' => $request->get('is_offer') ? 1 : false,
+            'status' => $request->get('status') ? 1 : false
+        ];
 
         $productImages = [];
         if ($mediaInfo['product_id'] = $this->productRepository->storeProduct($data)) {

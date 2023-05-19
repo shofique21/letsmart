@@ -56,7 +56,7 @@
     }
 
     .product-title {
-        font-size: 3rem;
+        font-size: 1.5rem;
         text-transform: capitalize;
         font-weight: 700;
         position: relative;
@@ -246,38 +246,25 @@
                 <div class="product-imgs">
                     <div class="img-display">
                         <div class="img-showcase">
-                            <img src="{{asset('images/shoe_1.jpg')}}" alt="shoe image">
-                            <img src="{{asset('images/shoe_1.jpg')}}" alt="shoe image">
-                            <img src="{{asset('images/shoe_1.jpg')}}" alt="shoe image">
-                            <img src="{{asset('images/shoe_1.jpg')}}" alt="shoe image">
+                            @foreach($product_details->productMedia->product_images as $product_image)
+                            <img src="{{asset('storage/'.$product_image)}}" alt="shoe image">
+                            @endforeach
                         </div>
                     </div>
                     <div class="img-select">
+                        @foreach($product_details->productMedia->product_images as $product_image)
                         <div class="img-item">
                             <a href="#" data-id="1">
-                                <img src="{{asset('images/shoe_1.jpg')}}" alt="shoe image">
+                                <!-- <img src="{{asset('images/shoe_1.jpg')}}" alt="shoe image"> -->
+                                <img src="{{asset('storage/'.$product_image)}}" alt="shoe image">
                             </a>
                         </div>
-                        <div class="img-item">
-                            <a href="#" data-id="2">
-                                <img src="{{asset('images/shoe_2.jpg')}}" alt="shoe image">
-                            </a>
-                        </div>
-                        <div class="img-item">
-                            <a href="#" data-id="3">
-                                <img src="{{asset('images/shoe_3.jpg')}}" alt="shoe image">
-                            </a>
-                        </div>
-                        <div class="img-item">
-                            <a href="#" data-id="4">
-                                <img src="{{asset('images/shoe_4.jpg')}}" alt="shoe image">
-                            </a>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <!-- card right -->
                 <div class="product-content">
-                    <h2 class="product-title">nike shoes</h2>
+                    <h2 class="product-title">{{$product_details->name}}</h2>
                     <a href="#" class="product-link">visit nike store</a>
                     <div class="product-rating">
                         <i class="fas fa-star"></i>

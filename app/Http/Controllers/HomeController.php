@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Repositories\Interfaces\CategoryRepositoryInterface;
 use App\Repositories\CategoryRepository;
+use App\Repositories\Interfaces\FrontentdProductRepositoryInterface;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -15,10 +16,12 @@ class HomeController extends Controller
      * @return void
      */
     private $categoryRepository;
+    private $productRepository;
 
-    public function __construct(CategoryRepositoryInterface $categoryRepository)
+    public function __construct(CategoryRepositoryInterface $categoryRepository, FrontentdProductRepositoryInterface $productRepository)
     {
        $this->categoryRepository = $categoryRepository;
+       $this->productRepository = $productRepository;
     }
 
     /**
@@ -29,6 +32,7 @@ class HomeController extends Controller
     public function index()
     {
         $categories = $this->categoryRepository->totalCategories();
-        return view('home', compact('categories'));
+        $products = $this->productRepository->allproducts();
+        return view('home', compact('categories','products'));
     }
 }

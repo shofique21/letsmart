@@ -20,36 +20,39 @@ class Product extends Model
         'short_description',
         'description',
         'SKU',
-        'sale_price',
         'inventory_id',
         'category_id',
+        'subcategory_id',
         'brand_id',
         'color',
-        'size'
+        'size',
+        'is_new',
+        'is_feature',
+        'is_offer',
+        'status'
     ];
-   
+
     public function category(): BelongsTo
     {
-        return $this->belongsTo(Category::class,'category_id','id');
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
     public function inventory(): BelongsTo
     {
-        return $this->belongsTo(Inventory::class, 'inventory_id','id');
+        return $this->belongsTo(Inventory::class, 'inventory_id', 'id');
     }
 
     public function discount(): BelongsTo
     {
         return $this->belongsTo(Discount::class);
     }
-    public function productMedia():HasOne
+    public function productMedia(): HasOne
     {
-        return $this->hasOne(ProductMedia::class,'product_id', 'id');
+        return $this->hasOne(ProductMedia::class, 'product_id', 'id');
     }
-    
+
     public function brand(): BelongsTo
     {
         return $this->belongsTo(Brand::class);
     }
-
 }

@@ -23,9 +23,11 @@ return new class extends Migration
             $table->text('color')->nullable();
             $table->string('size')->nullable();
             $table->bigInteger('inventory_id')->unsigned();
-            $table->double('sale_price',8,2)->nullable()->default(0);
             $table->bigInteger('discount_id')->unsigned()->nullable();
-            $table->integer('status')->nullable()->default(0);
+            $table->boolean('is_new')->nullable()->default(0);
+            $table->integebooleanr('is_feature')->nullable()->default(0);
+            $table->boolean('is_offer')->nullable()->default(0);
+            $table->boolean('status')->nullable()->default(0);
             $table->timestamps();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('inventory_id')->references('id')->on('inventories')->onDelete('cascade');

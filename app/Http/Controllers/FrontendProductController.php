@@ -16,20 +16,22 @@ class FrontendProductController extends Controller
 
     public function categoryProducts($id){
             $categories = $this->frontendProduct->allCategories();
-            $categoryProducts = $this->frontendProduct->singleCategory($id);
+            $categoryProducts = $this->frontendProduct->singleCategoryProducts($id);
             $subcategoryList = $this->frontendProduct->subcategoryList($id);
-            return view('frontend.categoryProduct', compact('categories','subcategoryList'));
+            return view('frontend.categoryProduct', compact('categories','subcategoryList','categoryProducts'));
     }
 
-    public function subcategoryProducts()
+    public function subcategoryProducts($id)
     {
         $categories = $this->frontendProduct->allCategories();
-        return view('frontend.subcategoryProducts', compact('categories'));
+        $subcategoryProducts = $this->frontendProduct->singleSubcategoryProducts($id);
+        return view('frontend.subcategoryProducts', compact('categories','subcategoryProducts'));
     }
 
-    public function productDetails()
+    public function productDetails($id)
     {
         $categories = $this->frontendProduct->allCategories();
-        return view('frontend.productDetails', compact('categories'));
+        $product_details = $this->frontendProduct->getProductDetails($id);
+        return view('frontend.productDetails', compact('categories','product_details'));
     }
 }
