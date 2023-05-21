@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Repositories\Interfaces\OrderRepositoryInterface;
+use App\Repositories\OrderRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Session;
 
 class CartController extends Controller
 {
@@ -88,6 +90,8 @@ class CartController extends Controller
             'total' => \Cart::getTotal(),
         ];
         $orderId = $this->orderRepository->createOrder($order);
+        Session::put('order_id', $orderId);
+
         foreach ($items as $item) {
             $itemData = [
                 'order_id' => $orderId,
@@ -109,9 +113,24 @@ class CartController extends Controller
         $this->orderRepository->shippingAddress($address);
         if ($response) {
             \Cart::clear();
-            return "Create your payment";
-        } else {
-            return redirect()->route('cart.list');
-        }
+            return view('frontend.payment');
+         } else {
+             return redirect()->route('cart.list');
+         }
+    }
+
+    public function paymentConfirm(Request $request){
+        $paymentData = $request->validate([
+            'payment_type' => 'required|string'
+        ]);
+            $paymentData = [
+                'user_id' => Auth::user()->id,
+                'order_id' => Session::get('order_id'),
+                'payment_type' => $request->get('payment_type'),
+                'amount' => $request->get('amount'),
+            ];
+            if($this->orderRepository->createPayment($paymentData)){
+                return "order invoice created successfully";
+            }
     }
 }

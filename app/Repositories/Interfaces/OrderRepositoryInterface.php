@@ -5,4 +5,5 @@ interface OrderRepositoryInterface {
     public function createOrder($order);
     public function saveItem($itemData);
     public function shippingAddress($address);
+    public function createPayment($paymentData);
 }
