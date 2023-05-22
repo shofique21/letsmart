@@ -7,7 +7,7 @@ use App\Repositories\Interfaces\OrderRepositoryInterface;
 use App\Repositories\OrderRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Session;
+use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
@@ -97,7 +97,7 @@ class CartController extends Controller
                 'order_id' => $orderId,
                 'product_id' => $item->id,
                 'quantity' => $item->quantity,
-                'item_total_price' => $item->quantity * $item->price
+                'item_total_price' =>$item->price
             ];
             $response  = $this->orderRepository->saveItem($itemData);
         }
@@ -130,7 +130,7 @@ class CartController extends Controller
                 'amount' => $request->get('amount'),
             ];
             if($this->orderRepository->createPayment($paymentData)){
-                return "order invoice created successfully";
+               return view('frontend.invoice');
             }
     }
 }

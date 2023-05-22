@@ -26,4 +26,16 @@ class OrderRepository implements OrderRepositoryInterface{
     {
         return Payment::create($paymentData);
     }
+
+    public function invoice($orderId)
+    {
+        return   Order::join('order_items', 'orders.id', '=', 'order_items.order_id')
+        ->where('orders.id',$orderId)->get();
+        
+    }
+
+    public function deliveryAddress($orderId)
+    {
+        return ShippingAddress::find($orderId);
+    }
 }

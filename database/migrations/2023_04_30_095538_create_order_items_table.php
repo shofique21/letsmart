@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('order_items', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('order_id')->unsigned();
+            $table->bigInteger('order_id')->unsigned()->index();
             $table->bigInteger('product_id')->unsigned();
             $table->integer('quantity')->nullable()->default(1);
             $table->double('item_total_price', 8,2)->nullable()->default(0);

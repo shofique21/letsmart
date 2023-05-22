@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\FrontendProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\StripePaymentController;
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,7 @@ Route::post('remove', [CartController::class, 'removeCart'])->name('cart.remove'
 Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');
 Route::post('confirm', [CartController::class, 'confirmAllCart'])->name('cart.confirm')->middleware('auth');
 Route::post('payment-confirm', [CartController::class, 'paymentConfirm'])->name('payment.confirm')->middleware('auth');
+Route::get('order-invoice', [InvoiceController::class, 'userInvoice'])->name('order.invoice')->middleware('auth');
 Route::controller(StripePaymentController::class)->group(function(){
     Route::get('stripe', 'stripe');
     Route::post('stripe', 'stripePost')->name('stripe.post');
