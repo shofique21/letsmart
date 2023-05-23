@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Payment;
 use App\Repositories\Interfaces\OrderRepositoryInterface;
 use App\Repositories\OrderRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Session;
+use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
@@ -97,7 +98,9 @@ class CartController extends Controller
                 'order_id' => $orderId,
                 'product_id' => $item->id,
                 'quantity' => $item->quantity,
-                'item_total_price' => $item->quantity * $item->price
+                'product_price' => $item->price,
+                'tax' => 0,
+                'discount' => 0,
             ];
             $response  = $this->orderRepository->saveItem($itemData);
         }
@@ -114,23 +117,32 @@ class CartController extends Controller
         if ($response) {
             \Cart::clear();
             return view('frontend.payment');
-         } else {
-             return redirect()->route('cart.list');
-         }
+        } else {
+            return redirect()->route('cart.list');
+        }
     }
 
-    public function paymentConfirm(Request $request){
+    public function paymentConfirm(Request $request)
+    {
+        $orderId =  Session::get('order_id');
+        $paymentStatus = Payment::where('order_id', $orderId)->first();
+        if (!is_null($paymentStatus)) {
+            return redirect()->to('/');
+        }
         $paymentData = $request->validate([
             'payment_type' => 'required|string'
         ]);
-            $paymentData = [
-                'user_id' => Auth::user()->id,
-                'order_id' => Session::get('order_id'),
-                'payment_type' => $request->get('payment_type'),
-                'amount' => $request->get('amount'),
-            ];
-            if($this->orderRepository->createPayment($paymentData)){
-                return "order invoice created successfully";
-            }
+        $paymentData = [
+            'user_id' => Auth::user()->id,
+            'order_id' => $orderId,
+            'payment_type' => $request->get('payment_type'),
+            'amount' => $request->get('amount'),
+        ];
+        if ($this->orderRepository->createPayment($paymentData)) {
+            $order = $this->orderRepository->orderInfo($orderId);
+            $orderItems = $this->orderRepository->invoice($orderId);
+            $shippingAddress = $this->orderRepository->deliveryAddress($orderId);
+            return view('frontend.invoice', compact('order', 'orderItems', 'shippingAddress'));
+        }
     }
 }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('short_description')->nullable();
             $table->text('description')->nullable();
             $table->string('SKU')->nullable();
+            $table->string('unit')->nullable();
             $table->bigInteger('category_id')->unsigned();
             $table->bigInteger('subcategory_id')->unsigned()->nullable();
             $table->bigInteger('brand_id')->unsigned()->nullable()->default(1);
