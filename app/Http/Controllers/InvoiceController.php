@@ -16,11 +16,12 @@ class InvoiceController extends Controller
         $this->invoiceRepository = $invoiceRepository;
     }
 
-    public function userInvoice($id = 1){
+    public function userInvoice($id){
         //$pdf = PDF::loadView('frontend.invoice');
         //return $pdf->download('customerInvoice.pdf');
+        $order = $this->invoiceRepository->orderInfo($id);
         $orderItems = $this->invoiceRepository->invoice($id);
         $shippingAddress = $this->invoiceRepository->deliveryAddress($id);
-        return view('frontend.invoice', compact('orderItems','shippingAddress'));
+        return view('frontend.invoice', compact('order','orderItems','shippingAddress'));
     }
 }

@@ -5,6 +5,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Payment;
 use App\Models\ShippingAddress;
+use App\Providers\RouteServiceProvider;
 use App\Repositories\Interfaces\OrderRepositoryInterface;
 
 class OrderRepository implements OrderRepositoryInterface{
@@ -27,15 +28,26 @@ class OrderRepository implements OrderRepositoryInterface{
         return Payment::create($paymentData);
     }
 
+    public function orderInfo($id){
+        return Order::find($id);
+    }
+
     public function invoice($orderId)
     {
         return   Order::join('order_items', 'orders.id', '=', 'order_items.order_id')
-        ->where('orders.id',$orderId)->get();
+        ->join('products', 'products.id', '=', 'order_items.product_id')->get([
+            'order_items.quantity', 'order_items.product_price','order_items.tax',
+            'order_items.discount','products.name','products.SKU'
+        ]);
         
     }
 
-    public function deliveryAddress($orderId)
+    public function deliveryAddress($id)
     {
-        return ShippingAddress::find($orderId);
+        return ShippingAddress::where('order_id',$id)->first();
+    }
+    public function backToHomePage()
+    {
+       return route('home');
     }
 }

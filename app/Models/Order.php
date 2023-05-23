@@ -10,10 +10,10 @@ use App\Models\OrderItem;
 class Order extends Model
 {
     use HasFactory;
-    protected $fillable =['user_id','total'];
+    protected $fillable =['user_id','total','total_tax'];
 
     public function orderItems():HasMany
     {
-        return $this->hasMany(OrderItem::class, 'order_id','id');
+        return $this->hasMany(OrderItem::class);
     }
 }

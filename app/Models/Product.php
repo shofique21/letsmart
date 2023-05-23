@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Inventory;
 use App\Models\ProductMedia;
 use App\Models\Brand;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Product extends Model
@@ -54,5 +55,9 @@ class Product extends Model
     public function brand(): BelongsTo
     {
         return $this->belongsTo(Brand::class);
+    }
+    public function orderItems(): HasMany
+    {
+        return $this->hasMany(Brand::class,'product_id','id');
     }
 }

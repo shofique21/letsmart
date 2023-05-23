@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Letsmart customer invoice</title>
+    <title>How To Generate Invoice PDF In Laravel 9 - Techsolutionstuff</title>
 </head>
 <style type="text/css">
     body{
         font-family: 'Roboto Condensed', sans-serif;
-        max-width: 1024px;
-        margin:  0 auto;
     }
     .m-0{
         margin: 0px;
@@ -85,11 +83,11 @@
 <div class="add-detail mt-10">
     <div class="w-50 float-left mt-10">
         <p class="m-0 pt-5 text-bold w-100">Invoice Id - <span class="gray-color">#1</span></p>
-        <p class="m-0 pt-5 text-bold w-100">Order Id - <span class="gray-color">{{$order->id}}</span></p>
+        <p class="m-0 pt-5 text-bold w-100">Order Id - <span class="gray-color">AB123456A</span></p>
         <p class="m-0 pt-5 text-bold w-100">Order Date - <span class="gray-color">22-01-2023</span></p>
     </div>
     <div class="w-50 float-left logo mt-10">
-        <img style="width: 150px;" src="{{asset('images/logo.png')}}" alt="Logo">
+        <img src="https://techsolutionstuff.com/frontTheme/assets/img/logo_200_60_dark.png" alt="Logo">
     </div>
     <div style="clear: both;"></div>
 </div>
@@ -110,10 +108,10 @@
             </td>
             <td>
                 <div class="box-text">
-                    <p> {{$shippingAddress->street_name}}</p>
-                    <p>{{$shippingAddress->postCode}}</p>
-                    <p>{{$shippingAddress->state}}</p>                    
-                    <p>phone: {{$shippingAddress->phone}}</p>
+                    <p> 410 Terry Ave N,</p>
+                    <p>Seattle WA 98109,</p>
+                    <p>United States</p>                    
+                    <p>Contact: 1-206-266-1000</p>
                 </div>
             </td>
         </tr>
@@ -142,21 +140,33 @@
             <th class="w-50">Tax Amount</th>
             <th class="w-50">Grand Total</th>
         </tr>
-<?php $total = 0 ?>
-        @foreach ($orderItems as $item) 
         <tr align="center">
-            <td>{{$item->SKU}}</td>
-            <td>{{$item->name}}</td>
-            <td>${{$item->product_price}}</td>
-            <td>{{$item->quantity}}</td>
-            <td>${{$item->product_price * $item->quantity }}</td>
-            <td>${{$item->tax}}</td>
-            <td><?php 
-             $total = $item->product_price * $item->quantity;
-             $total = + $item->tax;
-              ?></td>
+            <td>M101</td>
+            <td>Andoid Smart Phone</td>
+            <td>$500.2</td>
+            <td>3</td>
+            <td>$1500</td>
+            <td>$50</td>
+            <td>$1550.20</td>
         </tr>
-        @endforeach
+        <tr align="center">
+            <td>M102</td>
+            <td>Andoid Smart Phone</td>
+            <td>$250</td>
+            <td>2</td>
+            <td>$500</td>
+            <td>$50</td>
+            <td>$550.00</td>
+        </tr>
+        <tr align="center">
+            <td>T1010</td>
+            <td>Andoid Smart Phone</td>
+            <td>$1000</td>
+            <td>5</td>
+            <td>$5000</td>
+            <td>$500</td>
+            <td>$5500.00</td>
+        </tr>
         <tr>
             <td colspan="7">
                 <div class="total-part">
@@ -168,7 +178,7 @@
                     <div class="total-right w-15 float-left text-bold" align="right">
                         <p>$7600</p>
                         <p>$400</p>
-                        <p>${{$order->total}}</p>
+                        <p>$8000.00</p>
                     </div>
                     <div style="clear: both;"></div>
                 </div> 

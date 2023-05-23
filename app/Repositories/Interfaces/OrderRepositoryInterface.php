@@ -8,4 +8,6 @@ interface OrderRepositoryInterface {
     public function createPayment($paymentData);
     public function invoice($orderId);
     public function deliveryAddress($orderId);
+    public function orderInfo($id);
+    public function backToHomePage();
 }
