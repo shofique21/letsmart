@@ -11,11 +11,11 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Order extends Model
 {
     use HasFactory;
-    protected $fillable =['user_id','total','total_tax'];
+    protected $fillable =['user_id','invoice_id','total','total_tax'];
 
     public function orderItems():HasMany
     {
-        return $this->hasMany(OrderItem::class);
+        return $this->hasMany(OrderItem::class, 'order_id');
     }
 
     public function payments():HasOne

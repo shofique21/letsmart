@@ -155,6 +155,7 @@
              $total = $item->product_price * $item->quantity;
              $total = + $item->tax;
               ?></td>
+            <td>${{$total}}</td>
         </tr>
         @endforeach
         <tr>
@@ -162,12 +163,12 @@
                 <div class="total-part">
                     <div class="total-left w-85 float-left" align="right">
                         <p>Sub Total</p>
-                        <p>Tax (18%)</p>
+                        <p>Tax (0%)</p>
                         <p>Total Payable</p>
                     </div>
                     <div class="total-right w-15 float-left text-bold" align="right">
-                        <p>$7600</p>
-                        <p>$400</p>
+                        <p>${{$order->total}}</p>
+                        <p>$00</p>
                         <p>${{$order->total}}</p>
                     </div>
                     <div style="clear: both;"></div>
