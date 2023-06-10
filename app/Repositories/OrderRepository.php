@@ -35,7 +35,7 @@ class OrderRepository implements OrderRepositoryInterface{
     public function invoice($orderId)
     {
         return   Order::join('order_items', 'orders.id', '=', 'order_items.order_id')
-        ->join('products', 'products.id', '=', 'order_items.product_id')->get([
+        ->join('products', 'products.id', '=', 'order_items.product_id')->where('orders.id',$orderId)->get([
             'order_items.quantity', 'order_items.product_price','order_items.tax',
             'order_items.discount','products.name','products.SKU'
         ]);

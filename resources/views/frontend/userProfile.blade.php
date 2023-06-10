@@ -57,11 +57,11 @@
                         @foreach($myOrders as $order)
                         <tr>
                             <td>{{ $order->created_at}}</td>
-                            <td>{{ $order->invoice}}</td>
+                            <td>{{ $order->invoice_id}}</td>
                             <td>{{ $order->total}}</td>
                             <td>@if($order->payments->status == 0) <a href="" class="btn btn-info"> {{"Pending"}}</a> @else {{ "Confirmed"}} @endif</td>
                             <td>@if($order->delivered == 0){{"Pending"}} @else {{ "Delivered"}} @endif</td>
-                            <td><a href="" class="btn btn-primary">Details</a></td>
+                            <td><a href="{{route('order.invoice', $order->id)}}" class="btn btn-primary">Details</a></td>
                         </tr>
                         @endforeach
                     </table>
