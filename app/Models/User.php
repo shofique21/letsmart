@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\ShippingAddress;
+
 
 class User extends Authenticatable
 {
@@ -45,9 +47,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function addresses(): HasMany
+    public function shippingAddress(): HasMany
     {
-        return $this->hasMany(Address::class,'user_id');
+        return $this->hasMany(ShippingAddress::class, 'user_id');
     }
 
     public function payments(): HasMany
