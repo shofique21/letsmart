@@ -16,6 +16,7 @@ return new class extends Migration
             $table->bigInteger('session_id')->unsigned();
             $table->bigInteger('product_id')->unsigned();
             $table->integer('quantity')->nullable()->default(1);
+            $table->string('status')->default(1);
             $table->timestamps();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('session_id')->references('id')->on('users')->onDelete('cascade');

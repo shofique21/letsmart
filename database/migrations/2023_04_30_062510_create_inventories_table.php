@@ -22,6 +22,7 @@ return new class extends Migration
             $table->double('buy_accounts',8,2)->nullable()->default(0);
             $table->double('sold_accounts',8,2)->nullable()->default(0);
             $table->double('discount_accounts',8,2)->nullable()->default(0);
+            $table->string('status')->default(1);
             $table->timestamps();
         });
     }

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->double('product_price', 8,2)->nullable()->default(0);
             $table->double('tax', 8,2)->nullable()->default(0);
             $table->double('discount', 8,2)->nullable()->default(0);
+            $table->string('status')->default(1);
             $table->timestamps();
             $table->foreign('order_id')->references('id')->on('orders');
             $table->foreign('product_id')->references('id')->on('products');

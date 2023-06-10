@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('single_image')->nullable();
             $table->text('product_images')->nullable();
             $table->string('video_url')->nullable();
+            $table->string('status')->default(1);
             $table->timestamps();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });

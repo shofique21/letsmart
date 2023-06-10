@@ -26,7 +26,7 @@ return new class extends Migration
             $table->bigInteger('inventory_id')->unsigned();
             $table->bigInteger('discount_id')->unsigned()->nullable();
             $table->boolean('is_new')->nullable()->default(0);
-            $table->integebooleanr('is_feature')->nullable()->default(0);
+            $table->boolean('is_feature')->nullable()->default(0);
             $table->boolean('is_offer')->nullable()->default(0);
             $table->boolean('status')->nullable()->default(0);
             $table->timestamps();

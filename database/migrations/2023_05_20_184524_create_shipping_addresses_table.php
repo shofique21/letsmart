@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('postCode');
             $table->string('state');
             $table->string('phone');
+            $table->string('status')->default(1);
             $table->timestamps();
         });
     }
