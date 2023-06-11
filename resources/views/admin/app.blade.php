@@ -228,7 +228,7 @@
                                 </ul>
                                 <ul>
                                     <li><a class="dropdown-item" href="#">Order Management</a></li>
-                                    <li><a class="dropdown-item" href="#">Order List</a></li>
+                                    <li><a class="dropdown-item" href="{{route('order.list')}}">Order List</a></li>
                                     <li><a class="dropdown-item" href="#">Recent Order List</a></li>
                                     <li><a class="dropdown-item" href="#">Confirmed Order List</a></li>
                                     <li><a class="dropdown-item" href="#">Delivered List</a></li>

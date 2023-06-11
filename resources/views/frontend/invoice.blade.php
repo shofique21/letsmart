@@ -142,7 +142,6 @@
             <th class="w-50">Tax Amount</th>
             <th class="w-50">Grand Total</th>
         </tr>
-<?php $total = 0 ?>
         @foreach ($orderItems as $item) 
         <tr align="center">
             <td>{{$item->SKU}}</td>
@@ -153,9 +152,12 @@
             <td>${{$item->tax}}</td>
             <td><?php 
              $total = $item->product_price * $item->quantity;
-             $total = + $item->tax;
-              ?></td>
-            <td>${{$total}}</td>
+             $total = $total +  $item->tax;
+             echo "$".$total;
+              ?>
+              
+              </td>
+           
         </tr>
         @endforeach
         <tr>

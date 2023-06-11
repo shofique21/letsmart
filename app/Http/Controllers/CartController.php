@@ -79,17 +79,24 @@ class CartController extends Controller
     public function confirmAllCart(Request $request)
     {
         $items = \Cart::getContent();
-        if (!is_array($items)) {
-            return redirect()->to('/');
-        }
+        // dd($items);
+        // if (!is_array($items)) {
+        //     return redirect()->to('/');
+        // }
         $address = $request->validate([
             'street_name' => 'required|string',
             'postCode' => 'required|string|max:10',
             'state' => 'required|string|max:100',
             'phone' => 'required|string|max:15',
         ]);
-        $number = Order::latest()->first() ?? 1;
-        $invoiceId ="LTSM". 1000 + (int)$number->id; 
+        $number = Order::latest()->first();
+        if($number == null){
+            $number = 1;
+        }else {
+            $number = (int)$number->id;
+        }
+       
+        $invoiceId ="LTSM". 1000 + $number; 
         $order = [
             'user_id' => Auth::user()->id,
             'total' => \Cart::getTotal(),

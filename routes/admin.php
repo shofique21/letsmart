@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\OrderListController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/admin/login', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('adminLogin');
@@ -18,4 +19,6 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::resource('products', ProductController::class);
     Route::resource('users', UserController::class);
     Route::resource('brands', BrandController::class);
+    Route::get('orders-list', [OrderListController::class,'orderList'])->name('order.list');
+    Route::get('order-view/{id}', [OrderListController::class, 'orderDetails'])->name('order.view');
 });

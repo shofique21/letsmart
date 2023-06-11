@@ -10,4 +10,5 @@ interface OrderRepositoryInterface {
     public function deliveryAddress($orderId);
     public function orderInfo($id);
     public function backToHomePage();
+    public function orderUpdate($orderId);
 }

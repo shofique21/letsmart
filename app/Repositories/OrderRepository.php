@@ -50,4 +50,10 @@ class OrderRepository implements OrderRepositoryInterface{
     {
        return route('home');
     }
+    public function orderUpdate($orderId)
+    {
+        $order = Order::find($orderId);
+        $order->confirmed = 1;
+        return $order->save();
+    }
 }
