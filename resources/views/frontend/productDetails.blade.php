@@ -64,7 +64,7 @@
         margin: 1rem 0;
     }
 
-    .product-title::after {
+    /* .product-title::after {
         content: "";
         position: absolute;
         left: 0;
@@ -72,7 +72,7 @@
         height: 4px;
         width: 80px;
         background: #12263a;
-    }
+    } */
 
     .product-link {
         text-decoration: none;
@@ -265,7 +265,6 @@
                 <!-- card right -->
                 <div class="product-content">
                     <h2 class="product-title">{{$product_details->name}}</h2>
-                    <a href="#" class="product-link">visit nike store</a>
                     <div class="product-rating">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -276,33 +275,28 @@
                     </div>
 
                     <div class="product-price">
-                        <p class="last-price">Old Price: <span>$257.00</span></p>
-                        <p class="new-price">New Price: <span>$249.00 (5%)</span></p>
+                        <p class="new-price">Sale Price: $<span>{{$product_details->inventory->sale_price}}</span></p>
                     </div>
 
                     <div class="product-detail">
-                        <h2>about this item: </h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo eveniet veniam tempora fuga tenetur placeat sapiente architecto illum soluta consequuntur, aspernatur quidem at sequi ipsa!</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, perferendis eius. Dignissimos, labore suscipit. Unde.</p>
-                        <ul>
-                            <li>Color: <span>Black</span></li>
-                            <li>Available: <span>in stock</span></li>
-                            <li>Category: <span>Shoes</span></li>
-                            <li>Shipping Area: <span>All over the world</span></li>
-                            <li>Shipping Fee: <span>Free</span></li>
-                        </ul>
+                        <h3>about this item: </h3>
+                    <?php echo $product_details->description ?>
                     </div>
 
                     <div class="purchase-info">
-                        <input type="number" min="0" value="1">
-                        <button type="button" class="btn">
-                            Add to Cart <i class="fas fa-shopping-cart"></i>
-                        </button>
-                        <button type="button" class="btn">Compare</button>
+                        <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" value="{{ $product_details->id }}" name="id">
+                            <input type="hidden" value="{{ $product_details->name }}" name="name">
+                            <input type="hidden" value="{{ $product_details->inventory->sale_price }}" name="price">
+                            <input type="hidden" value="{{ $product_details->productMedia->product_images[0] }}"  name="image">
+                            <input type="hidden" value="1" name="quantity">
+                            <button class="btn btn-danger"><i class="bi bi-shopping-cart"></i> Add to Cart</button>
+                            </form>
                     </div>
 
                     <div class="social-links">
-                        <p>Share At: </p>
+                        <p class="mt-3">Share At: </p>
                         <a href="#">
                             <i class="bi bi-facebook"></i>
                         </a>

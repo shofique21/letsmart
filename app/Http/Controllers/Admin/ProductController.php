@@ -49,17 +49,21 @@ class ProductController extends Controller
             'name' => 'required|string|max:255',
             'category_id' => 'required|integer',
             'SKU' => 'required|string',
+            'regular_price' => 'required|string',
             'product_images' => 'required',
             'product_images.*' => 'image|mimes:jpeg,png,jpg,gif,svg,web|max:2048'
         ]);
 
         $inventoryData = $request->validate([
             'quantity' => 'required|integer',
-            'sale_price' => 'required|string'
+            'regular_price' => 'required|string'
         ]);
+        $salePrice = 0;
+        $salePrice = $request->get('regular_price'); 
         $inventoryData = [
             'buy_price' => $request->get('buy_price'),
-            'sale_price' => $request->get('sale_price'),
+            'regular_price' => $request->get('regular_price'),
+            'sale_price' => $salePrice,
             'quantity' => $request->get('quantity'),
             'total_stock' => $request->get('quantity'),
             'buy_accounts' => $request->get('quantity') * $request->get('buy_price')
@@ -68,12 +72,11 @@ class ProductController extends Controller
             'inventory_id' => Inventory::create($inventoryData)->id,
             'name' => $request->get('name'),
             'category_id' => $request->get('category_id'),
-            'subcategory_id' => $request->get('subcategory_id'),
             'SKU' => $request->get('SKU'),
             'short_description' => $request->get('short_description'),
             'description' => $request->get('description'),
-            'color' => $request->get('color'),
-            'size' => $request->get('size'),
+            'color' => json_encode($request->get('color')),
+            'size' => json_encode($request->get('size')),
             'is_new' => $request->get('is_new') ? 1 : false,
             'is_feature' => $request->get('is_feature') ? 1 : false,
             'is_offer' => $request->get('is_offer') ? 1 : false,

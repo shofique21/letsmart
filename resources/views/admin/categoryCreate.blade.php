@@ -20,11 +20,6 @@
                                 <label for="uname" class="form-label">Category Description:</label>
                                 <textarea class="form-control" rows="5" id="description" name="description"></textarea>
                             </div>
-                            
-                            <div class="form-check mb-3">
-                                <input class="form-check-input" type="checkbox" id="myCheck" name="status">
-                                <label class="form-check-label" for="myCheck">Is Active.</label>
-                            </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>

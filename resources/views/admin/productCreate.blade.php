@@ -27,15 +27,6 @@
                                 <div class="invalid-feedback">Please fill out this field.</div>
                             </div>
                             <div class="mb-3 mt-3">
-                                <label for="subcategory_id" class="form-label">Subcategory:</label>
-                                <select class="form-control" id="subcategory_id" name="subcategory_id">
-                                    <option value="">No Subcategory</option>
-                                    @foreach($subcategories as $subcategory)
-                                    <option value="{{$subcategory->id}}">{{$subcategory->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="mb-3 mt-3">
                                 <label for="brand_id" class="form-label">Brand:</label>
                                 <select class="form-control" id="brand_id" name="brand_id">
                                     <option value="1">None Brand</option>
@@ -46,17 +37,23 @@
                             </div>
                             <div class="mb-3 mt-3">
                                 <label for="color" class="form-label">Color:</label>
-                                <select class="form-control" id="color" name="color">
+                                <select class="form-control" id="color" name="color[]" required multiple>
                                     <option value="White">White</option>
                                     <option value="Black">Black</option>
+                                    <option value="Black">Light Grey</option>
                                     <option value="Blue">Blue</option>
-                                    <option value="Blue">Red</option>
+                                    <option value="Orange">Orange</option>
+                                    <option value="Green">Green</option>
+                                    <option value="Sky">Sky</option>
+                                    <option value="Yellow">Yellow</option>
+                                    <option value="Gray">Gray</option>
+                                    <option value="Red">Red</option>
+                                    <option value="Red">Pink</option>
                                 </select>
                             </div>
                             <div class="mb-3 mt-3">
                                 <label for="size" class="form-label">Size:</label>
-                                <select class="form-control" id="size" name="size">
-                                    <option value="S">S</option>
+                                <select class="form-control" id="size" name="size[]" required multiple>
                                     <option value="M">M</option>
                                     <option value="L">L</option>
                                     <option value="XL">XL</option>
@@ -78,12 +75,8 @@
                                 <div class="invalid-feedback">Please fill out this field.</div>
                             </div>
                             <div class="mb-3 mt-3">
-                                <label for="category_id" class="form-label">SKU:</label>
-                                <select class="form-control" id="SKU" name="SKU">
-                                    <option value="Peces">Peces</option>
-                                    <option value="Dorzon">Dorzon</option>
-                                    <option value="Kg">Kg</option>
-                                </select>
+                                <label for="SKU" class="form-label">SKU Number:</label>
+                                <input type="text" class="form-control" id="SKU" placeholder="Enter SKU" name="SKU" required>
                                 <div class="valid-feedback">Valid.</div>
                                 <div class="invalid-feedback">Please fill out this field.</div>
                             </div>
@@ -93,9 +86,10 @@
                                 <div class="valid-feedback">Valid.</div>
                                 <div class="invalid-feedback">Please fill out this field.</div>
                             </div>
+                            
                             <div class="mb-3 mt-3">
-                                <label for="sale_price" class="form-label">Sale Price:</label>
-                                <input type="text" class="form-control" id="sale_price" name="sale_price" required>
+                                <label for="sale_price" class="form-label"> Regular Sale Price:</label>
+                                <input type="text" class="form-control" id="regular_price" name="regular_price" required>
                                 <div class="valid-feedback">Valid.</div>
                                 <div class="invalid-feedback">Please fill out this field.</div>
                             </div>
