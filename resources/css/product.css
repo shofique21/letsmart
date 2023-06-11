@@ -1,1 +1,4 @@
-
+.card-size{
+    min-height: 588px !important;
+    max-height: 650px !important;
+}
