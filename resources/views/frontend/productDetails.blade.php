@@ -265,15 +265,17 @@
                 <!-- card right -->
                 <div class="product-content">
                     <h2 class="product-title">{{$product_details->name}}</h2>
-                    <div class="product-rating">
+                    <!-- <div class="product-rating">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
                         <span>4.7(21)</span>
+                    </div> -->
+                    <div class="product-price">
+                        <p class="new-price">In Stock: <span>{{$product_details->inventory->quantity}}</span></p>
                     </div>
-
                     <div class="product-price">
                         <p class="new-price">Sale Price: $<span>{{$product_details->inventory->sale_price}}</span></p>
                     </div>
