@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('postalCode')->nullable();
             $table->string('country')->nullable();
             $table->string('mobile')->nullable();
+            $table->integer('is_shipping_address')->nullable()->default(0);
+            $table->string('status')->default(1);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

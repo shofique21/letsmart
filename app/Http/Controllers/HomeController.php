@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Repositories\Interfaces\CategoryRepositoryInterface;
+use App\Repositories\CategoryRepository;
+use App\Repositories\Interfaces\FrontentdProductRepositoryInterface;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\Cast\Object_;
 
 class HomeController extends Controller
 {
@@ -11,9 +16,13 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    private $categoryRepository;
+    private $productRepository;
+
+    public function __construct(CategoryRepositoryInterface $categoryRepository, FrontentdProductRepositoryInterface $productRepository)
     {
-        $this->middleware('auth');
+       $this->categoryRepository = $categoryRepository;
+       $this->productRepository = $productRepository;
     }
 
     /**
@@ -23,6 +32,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $categories = $this->categoryRepository->totalCategories();
+        $products = $this->productRepository->allproducts() ?? null;
+        // foreach($products as $product){
+        //     if($product->is_feature == 1){
+        //         $product = (array)$product;
+        //         $featureProducts = array_merge($featureProducts,$product);
+        //     }
+        // }
+        if($products->count() > 0) {
+        return view('home', compact('categories','products'));
+        }
+        else {
+            return view('home2', compact('categories'));
+        }
     }
 }
